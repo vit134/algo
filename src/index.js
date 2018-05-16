@@ -91,5 +91,5 @@ console.timeEnd('selectionSort');
 console.log('insertionSort');
 console.time('insertionSort');
 
-algo.insertionSort();
+console.log(algo.insertionSort());
 console.timeEnd('insertionSort');
