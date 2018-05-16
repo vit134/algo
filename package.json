@@ -1,16 +1,29 @@
 {
-  "name": "algo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "webpack-dev-boilerplate",
+  "version": "1.0.1",
+  "description": "Boilerplate for create project with webpack build and dev server",
   "scripts": {
     "watch": "webpack --watch",
     "build": "webpack",
     "dev": "webpack-dev-server --mode development --open",
     "test": "mocha -r babel-core/register src/**/*.test.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "webpack",
+    "webpack4",
+    "webpack-dev-server",
+    "mocha",
+    "chai",
+    "boilerpalte"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vit134/algo"
+  },
+  "author": {
+    "name": "Vitaliy Andryushkov",
+    "email": "vit134@mail.ru"
+  },
   "license": "ISC",
   "dependencies": {
     "babel-eslint": "^8.2.3",
