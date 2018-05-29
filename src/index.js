@@ -1,4 +1,4 @@
-class Algo {
+/* class Algo {
     constructor(A) {
         this._A = A;
         
@@ -228,3 +228,46 @@ lessonArray.copyAndSort();
 lessonArray.randomSort();
 lessonArray.objectSort();
 lessonArray.oneList();
+ */
+
+import './style.css';
+
+const displayHeight = 10;
+const displayWidth = 20;
+
+const screen = document.querySelector('.screen');
+let arr = [];
+
+for (let i = 0; i < displayHeight * displayWidth; i++) {
+    let cell = document.createElement('div');
+    cell.className = 'screen__cell';
+
+    screen.appendChild(cell);
+
+    cell.addEventListener('click', function (e) {
+        this.classList.toggle('active');
+        
+        if (this.classList.contains('active')) {
+            arr.push(i)
+        } else {
+            const ind = arr.indexOf(i);
+            arr.splice(ind, 1);
+        }
+
+        console.log(arr);
+    })
+}
+
+const numWidth = 5;
+const numHeight = displayHeight;
+
+const num_2 = [10, 6, 7, 8, 14, 19, 24, 28, 32, 31, 35, 40, 41, 42, 43, 44];
+
+const getOffset = (num, i) => {
+    return num.map(el => {
+        return {
+            x: el / numWidth,
+            y: el
+        }
+    });
+}
