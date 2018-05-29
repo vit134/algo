@@ -90,6 +90,141 @@ console.timeEnd('selectionSort');
 
 console.log('insertionSort');
 console.time('insertionSort');
-
 console.log(algo.insertionSort());
 console.timeEnd('insertionSort');
+
+
+class LessonArray {
+    constructor() {
+        this._obj = {
+            className: 'open menu'
+        }
+    }
+
+    _indexOf(what, where) {
+        return where.indexOf(what);
+    }
+
+    //добавление подстроки в строку разбитой пробелами
+    addClass(cls, obj = this._obj) {
+        let classes = obj.className.split(' ');
+        
+        if (this._indexOf(cls, classes) === -1) {
+            classes.push(cls);
+        }
+
+        obj.className = classes.join(' ');
+
+        console.log(obj.className)
+    }
+
+    // приведение строки вида background-color к backgroundColor
+    camelize(str) {
+        let arr = str.split('-');
+
+        const a = arr.map((el, i) => {
+            if (i !== 0) {
+                el = el[0].toUpperCase() + el.slice(1);
+            }
+
+            return el;
+        });
+
+        console.log(a.join(''));
+    }
+
+    //Удаленеие подстроки из строки разбитой пробелами
+    removeClass(cls, obj = {className: 'open menu open'}) {
+        let classes = obj.className.split(' ');
+
+        for (let i = 0; i < classes.length; i++) {
+            if (classes[i] === cls) {
+                classes.splice(i, 1);
+            }
+        }
+
+        console.log(classes.join(' '));
+    }
+
+    // фильтрация массива на "месте". Удаление чисел вне диапазона a..b
+    filterrangeInPlace(a, b, arr = [5, 3, 8, 1]) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] <= a || arr[i] >= b) {
+                arr.splice(i, 1);
+            }
+        }
+
+        console.log(arr);
+    }
+
+    reverseFilter(arr = [5, 2, 1, -10, 8]) {
+        console.log(arr.sort().reverse());
+    }
+
+    copyAndSort(arr = ["HTML", "JavaScript", "CSS"]) {
+        let sortArr = arr.map(el => {
+            return el;
+        });
+
+        sortArr.sort();
+
+        console.log(arr, sortArr);
+    }
+
+    randomSort(arr = [1, 2, 3, 4, 5]) {
+        arr = arr.sort((a, b) => {
+            return Math.random() - 0.5;
+        })
+
+        console.log(arr);
+    }
+
+    objectSort() {
+        var vasya = { name: "Вася", age: 23 };
+        var masha = { name: "Маша", age: 18 };
+        var vovochka = { name: "Вовочка", age: 6 };
+
+        var people = [ vasya , masha , vovochka ];
+
+        people.sort((a, b) => {
+            return a.age - b.age;
+        })
+
+        console.log(people);
+    }
+
+    oneList(arr = [1,2,3,4]) {
+        const list = {};
+        let entry = list;
+
+        for (let i = 0, item; item = arr[i++];) {
+            entry.next = {};
+            entry.value = item;
+
+            entry = entry.next;
+        }
+
+        console.log(list);
+    }
+}
+
+const lessonArray = new LessonArray();
+
+lessonArray.addClass('new');
+lessonArray.addClass('open');
+lessonArray.addClass('me');
+
+lessonArray.camelize('background-color');
+lessonArray.camelize('list-style-image');
+lessonArray.camelize('-webkit-transition');
+
+lessonArray.removeClass('open');
+lessonArray.removeClass('blabla');
+lessonArray.removeClass('menu');
+
+lessonArray.filterrangeInPlace(1, 4);
+lessonArray.reverseFilter();
+lessonArray.copyAndSort();
+lessonArray.randomSort();
+lessonArray.objectSort();
+lessonArray.oneList();
