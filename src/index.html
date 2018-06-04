@@ -3,763 +3,756 @@
 <head>
     <title>Примеры. Собственный элемент управления.</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;load=package.full" type="text/javascript"></script>
     <script src="rainbow-custom.min.js"></script>
     <script src="roads.js"></script>
     <link rel="stylesheet" href="themes/pastie.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="title">Вопросы и задачи по Javascript</div>
-    </header>
-    <main>
-        <section>
-            <h2 class="title">Алгоритмы</h2>
+    <div class="container-fluid">
+        <header>
+            <div class="title">Вопросы и задачи по Javascript</div>
+        </header>
+        <main>
             <section>
-                <h3 class="title">Сортировка</h3>
+                <h2 class="title">Алгоритмы</h2>
                 <section>
-                    <h4 class="title">Buble Sort (сортировка пузырьком)</h4>
-                    <h5>Описание</h6>
-                    <p>
-                        Заключается в сравнении соседних элементов и их обмене, если они находятся не в надлежащем порядке. Неоднократно выполняя это действие,
-                        мы заставляем наибольший элемент "всплывать" к концу массива. Следующий проход приведет к всплыванию второго наибольшего
-                        элемента, и так до тех пор, пока после n−1 итерации массив не будет полностью отсортирован.
-                    </p>
-                    <h5>Сложность</h5>
-                    <p>O(n<sup>2</sup>)</p>
-                    <h5>Код</h5>
-                    <pre>
-                        <code data-language="javascript">bubleSorting() {
-    let arr = [14, 23, 1, 4, 3, 16, 20, 43, 34, 55, 76];
-    let l = arr.length;
-
-    for (var i = 0; i < l - 1; i++) {
-        for (var j=0 ; j < l - 1 - i; j++) {
-            if (arr[j]> arr[j + 1]) {
-                var tmp = arr[j + 1];
-                arr[j + 1] = arr[j];
-                arr[j] = tmp;
-            }
-        }
-    }
-
-    return arr;
-}</code>
-                    </pre>
-                </section>
-                <section>
-                    <h4 class="title">Selection Sort (сортировка выбором)</h4>
-                    <h5>Описание</h6>
+                    <h3 class="title">Сортировка</h3>
+                    <section>
+                        <h4 class="title">Buble Sort (сортировка пузырьком)</h4>
+                        <h5>Описание</h6>
                         <p>
-                            Сортировка выбором начинается с поиска наименьшего элемента в списке и обмена его с первым элементом (таким образом, наименьший
-                            элемент помещается в окончательную позицию в отсортированном массиве). Затем мы сканируем массив, начиная со второго элемента,
-                            в поисках наименьшего среди оставшихся n−1 элементов и обмениваем найденный наименьший элемент со вторым, т.е. помещаем второй
-                            наименьший элемент в окончательную позицию в отсортированном массиве. В общем случае, при i-ом проходе по списку (0⩽i⩽n−2)
-                            алгоритм ищет наименьший элемент среди последних n−i элементов и обменивает его с A[i] . После выполнения n−1 проходов список
-                            оказывается отсортирован.
+                            Заключается в сравнении соседних элементов и их обмене, если они находятся не в надлежащем порядке. Неоднократно выполняя это действие,
+                            мы заставляем наибольший элемент "всплывать" к концу массива. Следующий проход приведет к всплыванию второго наибольшего
+                            элемента, и так до тех пор, пока после n−1 итерации массив не будет полностью отсортирован.
                         </p>
                         <h5>Сложность</h5>
-                        <p>O(n
-                            <sup>2</sup>)</p>
+                        <p>O(n<sup>2</sup>)</p>
                         <h5>Код</h5>
                         <pre>
-                            <code data-language="javascript">selectionSort() {
-    let arr = [14, 23, 1, 4, 3, 16, 20, 43, 34, 55, 76];
-    let l = arr.length;
+                            <code data-language="javascript">bubleSorting() {
+        let arr = [14, 23, 1, 4, 3, 16, 20, 43, 34, 55, 76];
+        let l = arr.length;
 
-    for (let i = 0; i < l - 1; i++) {
-        var min = i;
-        for (let j = i + 1; j < l; j++) {
-            if (A[j] < A[min]) {
-                min = j;
+        for (var i = 0; i < l - 1; i++) {
+            for (var j=0 ; j < l - 1 - i; j++) {
+                if (arr[j]> arr[j + 1]) {
+                    var tmp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = tmp;
+                }
             }
         }
-        var tmp = A[min];
-        A[min] = A[i];
-        A[i] = tmp;
+
+        return arr;
+    }</code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4 class="title">Selection Sort (сортировка выбором)</h4>
+                        <h5>Описание</h6>
+                            <p>
+                                Сортировка выбором начинается с поиска наименьшего элемента в списке и обмена его с первым элементом (таким образом, наименьший
+                                элемент помещается в окончательную позицию в отсортированном массиве). Затем мы сканируем массив, начиная со второго элемента,
+                                в поисках наименьшего среди оставшихся n−1 элементов и обмениваем найденный наименьший элемент со вторым, т.е. помещаем второй
+                                наименьший элемент в окончательную позицию в отсортированном массиве. В общем случае, при i-ом проходе по списку (0⩽i⩽n−2)
+                                алгоритм ищет наименьший элемент среди последних n−i элементов и обменивает его с A[i] . После выполнения n−1 проходов список
+                                оказывается отсортирован.
+                            </p>
+                            <h5>Сложность</h5>
+                            <p>O(n
+                                <sup>2</sup>)</p>
+                            <h5>Код</h5>
+                            <pre>
+                                <code data-language="javascript">selectionSort() {
+        let arr = [14, 23, 1, 4, 3, 16, 20, 43, 34, 55, 76];
+        let l = arr.length;
+
+        for (let i = 0; i < l - 1; i++) {
+            var min = i;
+            for (let j = i + 1; j < l; j++) {
+                if (A[j] < A[min]) {
+                    min = j;
+                }
+            }
+            var tmp = A[min];
+            A[min] = A[i];
+            A[i] = tmp;
+        }
+
+        return arr;
+    }</code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4 class="title">Merge sort (Сортировка слиянием)</h4>
+                        <h5>Описание</h6>
+                            <p>
+                                Разделение: массив разбивается на два подмассива. Упорядочивание: подмассивы сортируются (к ним рекурсивно применяется сортировка
+                                слиянием). Слияние: упорядоченные подмассивы объединяются в один отсортированный массив.
+                            </p>
+                            <h5>Сложность</h5>
+                            <p>O(n log n)</p>
+                            <h5>Код</h5>
+                            <pre>
+                                <code data-language="javascript">const list = [2, 5, 1, 3, 7, 2, 3, 8, 6, 3]
+    const merge = (xs, ys) => { // вспомогательная функци
+        if (xs.length === 0) return ys;
+        if (ys.length === 0) return xs;
+        const x = xs[0];
+        const y = ys[0];
+        return (x < y)
+        ? [x, ...merge(xs.slice(1), ys)]
+        : [y, ...merge(xs, ys.slice(1))];
     }
 
-    return arr;
-}</code>
-                    </pre>
+    const mergeSorting = (arr) => {
+        if (arr.length === 1) { return arr }
+        let half = Math.floor(arr.length / 2);
+        let left = arr.slice(0, half);
+        let right = arr.slice(half);
+
+        return merge(mergeSorting(left), mergeSorting(right));
+    }</code>
+                        </pre>
+                    </section>
                 </section>
                 <section>
-                    <h4 class="title">Merge sort (Сортировка слиянием)</h4>
-                    <h5>Описание</h6>
-                        <p>
-                            Разделение: массив разбивается на два подмассива. Упорядочивание: подмассивы сортируются (к ним рекурсивно применяется сортировка
-                            слиянием). Слияние: упорядоченные подмассивы объединяются в один отсортированный массив.
-                        </p>
+                    <h3>Поиск</h3>
+                    <section>
+                        <h4>Бинарный поиск</h4>
+                        <h5>Описание</h5>
+                        <p>Поиск при помощи метода разделения</p>
                         <h5>Сложность</h5>
-                        <p>O(n log n)</p>
-                        <h5>Код</h5>
-                        <pre>
-                            <code data-language="javascript">const list = [2, 5, 1, 3, 7, 2, 3, 8, 6, 3]
-const merge = (xs, ys) => { // вспомогательная функци
-    if (xs.length === 0) return ys;
-    if (ys.length === 0) return xs;
-    const x = xs[0];
-    const y = ys[0];
-    return (x < y)
-    ? [x, ...merge(xs.slice(1), ys)]
-    : [y, ...merge(xs, ys.slice(1))];
-}
+                        <p>O(log<sub>2</sub>n)</p>
+                        <h5>Код</h6>
+                            <pre>
+                            <code data-language="javascript">function BinarySearch(t, A) {
+        let i = 0,
+            j = A.length - 1,
+            k;
 
-const mergeSorting = (arr) => {
-    if (arr.length === 1) { return arr }
-    let half = Math.floor(arr.length / 2);
-    let left = arr.slice(0, half);
-    let right = arr.slice(half);
-
-    return merge(mergeSorting(left), mergeSorting(right));
-}</code>
-                    </pre>
-                </section>
-            </section>
-            <section>
-                <h3>Поиск</h3>
-                <section>
-                    <h4>Бинарный поиск</h4>
-                    <h5>Описание</h5>
-                    <p>Поиск при помощи метода разделения</p>
-                    <h5>Сложность</h5>
-                    <p>O(log<sub>2</sub>n)</p>
-                    <h5>Код</h6>
-                        <pre>
-                        <code data-language="javascript">function BinarySearch(t, A) {
-    let i = 0,
-        j = A.length - 1,
-        k;
-
-    while (i < =j ) {
-        k = Math.floor((i + j) / 2);
-        if (t === A[k]) {
-            return k;
-        } else if (t < A[k]) {
-            j = k - 1;
-        } else {
-            i = k + 1;
+        while (i < =j ) {
+            k = Math.floor((i + j) / 2);
+            if (t === A[k]) {
+                return k;
+            } else if (t < A[k]) {
+                j = k - 1;
+            } else {
+                i = k + 1;
+            } 
         } 
-    } 
 
-    return -1;
-}</code>
-                    </pre>
-                </section>
-                <section>
-                    <h4>Суффиксное дерево</h4>
-                    <h5>Описание</h5>
-                    <p>Поиск подстроки в массиве строк. Нужна предварительная подготовка</p>
-                    <p>Для такого поиска нужно 
-                        <ul>
-                            <li>Простая очередь</li>
-                            <li>Суффиксное дерево</li>
-                        </ul>
-                    </p>
-                    <h5>
-                        Сложность
-                    </h5>
-                    <p>
-                        <ul>
-                            <li>Построение - О(N*M*M)</li>
-                            <li>Память - О(N*M*M)</li>
-                            <li>Проверка наличия подстроки - O(K)</li>
-                            <li>Поиск - O(K+N*(M-K)) => O(K+10*(M-K)) => O(M)</li>
-                        </ul>
-                    </p>
-                    <h5>Код</h5>
-                    <pre>
-                        <code data-language="javascript"> // простенькая очередь :)
-class Queue {
-    constructor(items) {
-        this._queueStartIndex = 0;
-        this._queue = Array.isArray(items) ? [ ...items ] : [];
-    } 
+        return -1;
+    }</code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h4>Суффиксное дерево</h4>
+                        <h5>Описание</h5>
+                        <p>Поиск подстроки в массиве строк. Нужна предварительная подготовка</p>
+                        <p>Для такого поиска нужно 
+                            <ul>
+                                <li>Простая очередь</li>
+                                <li>Суффиксное дерево</li>
+                            </ul>
+                        </p>
+                        <h5>
+                            Сложность
+                        </h5>
+                        <p>
+                            <ul>
+                                <li>Построение - О(N*M*M)</li>
+                                <li>Память - О(N*M*M)</li>
+                                <li>Проверка наличия подстроки - O(K)</li>
+                                <li>Поиск - O(K+N*(M-K)) => O(K+10*(M-K)) => O(M)</li>
+                            </ul>
+                        </p>
+                        <h5>Код</h5>
+                        <pre>
+                            <code data-language="javascript"> // простенькая очередь :)
+    class Queue {
+        constructor(items) {
+            this._queueStartIndex = 0;
+            this._queue = Array.isArray(items) ? [ ...items ] : [];
+        } 
 
-    add(item) {
-        this._queue.push(item);
-    }
+        add(item) {
+            this._queue.push(item);
+        }
 
-    addAll(items) {
-        this._queue.push(...items);
-    }
+        addAll(items) {
+            this._queue.push(...items);
+        }
 
-    poll() {
-        return !this.isEmpty() && this._queue[this._queueStartIndex++];
-    }
+        poll() {
+            return !this.isEmpty() && this._queue[this._queueStartIndex++];
+        }
 
-    isEmpty() {
-        return this._queueStartIndex === this._queue.length;
-    }
-} 
-
-class Trie {
-    constructor(words, limit) {
-        this._trie = this._createNode();
-        this._words = Array.from(words); // запоминаем исходный массив
-        this._limit = limit;
-        this._buildTree();
-    } 
-
-    _createNode() {
-        return {
-            edges: {},
-            wordEnds: []
+        isEmpty() {
+            return this._queueStartIndex === this._queue.length;
         }
     } 
 
-    _buildTree() {
-        const words = this._words;
-        const trie = this._trie;
-        let nodeCount = 0;
+    class Trie {
+        constructor(words, limit) {
+            this._trie = this._createNode();
+            this._words = Array.from(words); // запоминаем исходный массив
+            this._limit = limit;
+            this._buildTree();
+        } 
 
-        for (let i = 0; i < words.length; i++) {
-            // перебираем слова
-            const currentWord = words[i].toLowerCase();
-            for (let k=0 ; k < currentWord.length; k++) {
-                // перебираем все суффиксы слова
-                let currentNode = trie;
+        _createNode() {
+            return {
+                edges: {},
+                wordEnds: []
+            }
+        } 
 
-                for (let j=k ; j < currentWord.length; j++) {
-                    // записываем суффикс в дерево
-                    if (!currentNode.edges[currentWord[j]]) {
-                        currentNode.edges[currentWord[j]] = this._createNode();
-                        nodeCount++;
+        _buildTree() {
+            const words = this._words;
+            const trie = this._trie;
+            let nodeCount = 0;
+
+            for (let i = 0; i < words.length; i++) {
+                // перебираем слова
+                const currentWord = words[i].toLowerCase();
+                for (let k=0 ; k < currentWord.length; k++) {
+                    // перебираем все суффиксы слова
+                    let currentNode = trie;
+
+                    for (let j=k ; j < currentWord.length; j++) {
+                        // записываем суффикс в дерево
+                        if (!currentNode.edges[currentWord[j]]) {
+                            currentNode.edges[currentWord[j]] = this._createNode();
+                            nodeCount++;
+                        } 
+                        currentNode = currentNode.edges[currentWord[j]];
                     } 
-                    currentNode = currentNode.edges[currentWord[j]];
+                    
+                    currentNode.wordEnds.push(i); // запоминаем индекс строки в последнем символе
+                } 
+            }
+            
+            console.log(trie);
+        } 
+
+        find(input) {
+            input = input.toLowerCase();
+            // берем Set, чтобы избавиться от дублей
+            const results = new Set();
+            let currentNode = this._trie; 
+            // проверяем, что такая подстрока вообще есть, если нет,сразу возвращаем пустой массив 
+            for (let i=0 ; i < input.length; i++) {
+                if (currentNode.edges[input[i]]) {
+                    currentNode = currentNode.edges[input[i]];
+                } else {
+                    return []; 
+                } 
+            } 
+            // начинаем обход дерева, чтобы найти исходные строки 
+            const queue = new Queue([currentNode]); 
+            wh: 
+            while (!queue.isEmpty()) {
+                currentNode=q ueue.poll();
+                for (let i=0 ; i < currentNode.wordEnds.length; i++) {
+                    results.add(currentNode.wordEnds[i]);
+                    console.log(currentNode.wordEnds[i]);
+
+                    // перестаем искать, если нашли 10
+                    if (results.size===t his._limit) {
+                        break wh;
+                    }
                 } 
                 
-                currentNode.wordEnds.push(i); // запоминаем индекс строки в последнем символе
-            } 
+                queue.addAll(Object.values(currentNode.edges))
+            }
+            // возвращаем непосредственно строки
+            return Array.from(results)
+                .map(index=> this._words[index]);
         }
-        
-        console.log(trie);
-    } 
-
-    find(input) {
-        input = input.toLowerCase();
-        // берем Set, чтобы избавиться от дублей
-        const results = new Set();
-        let currentNode = this._trie; 
-        // проверяем, что такая подстрока вообще есть, если нет,сразу возвращаем пустой массив 
-        for (let i=0 ; i < input.length; i++) {
-            if (currentNode.edges[input[i]]) {
-                currentNode = currentNode.edges[input[i]];
-            } else {
-                return []; 
-            } 
-        } 
-        // начинаем обход дерева, чтобы найти исходные строки 
-        const queue = new Queue([currentNode]); 
-        wh: 
-        while (!queue.isEmpty()) {
-            currentNode=q ueue.poll();
-            for (let i=0 ; i < currentNode.wordEnds.length; i++) {
-                results.add(currentNode.wordEnds[i]);
-                console.log(currentNode.wordEnds[i]);
-
-                // перестаем искать, если нашли 10
-                if (results.size===t his._limit) {
-                    break wh;
-                }
-            } 
-            
-            queue.addAll(Object.values(currentNode.edges))
-        }
-        // возвращаем непосредственно строки
-        return Array.from(results)
-            .map(index=> this._words[index]);
-    }
-}</code>
-                    </pre>
+    }</code>
+                        </pre>
+                    </section>
                 </section>
             </section>
-        </section>
-        <section>
-            <h2>Задачи (codewars)</h2>
             <section>
-                <h3><a href="http://www.codewars.com/kata/545cedaa9943f7fe7b000048/train/javascript" target="_blank">Панграм</a></h3>
-                <h5>Задание</h5>
-                <p>Панграма - это предложение, содержащее каждую букву алфавита хотя бы один раз. Например, предложение «Быстрая коричневая
-                лиса прыгает по ленивой собаке» - это панграма, потому что она использует буквы A-Z хотя бы один раз (случай не имеет значения).
-                Учитывая строку, определите, является ли она панграмой. Верните True, если это так, False, если нет. Игнорировать числа и
-                знаки препинания.</p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function isPangram(string) {
-    string = string.toLowerCase();
+                <h2>Задачи (codewars)</h2>
+                <section>
+                    <h3><a href="http://www.codewars.com/kata/545cedaa9943f7fe7b000048/train/javascript" target="_blank">Панграм</a></h3>
+                    <h5>Задание</h5>
+                    <p>Панграма - это предложение, содержащее каждую букву алфавита хотя бы один раз. Например, предложение «Быстрая коричневая
+                    лиса прыгает по ленивой собаке» - это панграма, потому что она использует буквы A-Z хотя бы один раз (случай не имеет значения).
+                    Учитывая строку, определите, является ли она панграмой. Верните True, если это так, False, если нет. Игнорировать числа и
+                    знаки препинания.</p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function isPangram(string) {
+        string = string.toLowerCase();
 
-    return "abcdefghijklmnopqrstuvwxyz".split("").every(function(x){
-        return string.indexOf(x) !== -1; 
-    });
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>
-                    <a href="http://www.codewars.com/kata/57814d79a56c88e3e0000786/train/javascript" target="_blank">Шифрование через одного</a>
-                </h3>
-                <h5>Задание</h5>
-                <p>Для построения зашифрованной строки: Возьмите каждый второй символ из строки, затем другие символы, которые не являются каждым
-                вторым символом, и конкатцируют их как новую строку. Делайте это n раз!</p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function encrypt(text, n) {
-    if (n === 0 || '' || null) return text;
-    if (text == null || text === '') return text;
+        return "abcdefghijklmnopqrstuvwxyz".split("").every(function(x){
+            return string.indexOf(x) !== -1; 
+        });
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>
+                        <a href="http://www.codewars.com/kata/57814d79a56c88e3e0000786/train/javascript" target="_blank">Шифрование через одного</a>
+                    </h3>
+                    <h5>Задание</h5>
+                    <p>Для построения зашифрованной строки: Возьмите каждый второй символ из строки, затем другие символы, которые не являются каждым
+                    вторым символом, и конкатцируют их как новую строку. Делайте это n раз!</p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function encrypt(text, n) {
+        if (n === 0 || '' || null) return text;
+        if (text == null || text === '') return text;
 
-    let newString = text;
-    
-    for (let i = 0; i < n; i++) {
-        let start=[ ];
-        let end=[ ];
+        let newString = text;
         
-        for (let j=0 ; j < newString.length; j++) { 
-            if (j !=0 && j % 2 !=0 ) {
-                start.push(newString[j]);
+        for (let i = 0; i < n; i++) {
+            let start=[ ];
+            let end=[ ];
+            
+            for (let j=0 ; j < newString.length; j++) { 
+                if (j !=0 && j % 2 !=0 ) {
+                    start.push(newString[j]);
+                } else {
+                    end.push(newString[j])
+                } 
+            } 
+            
+            newString=[ ...start, ...end].join( ''); 
+        }
+
+        return newString;
+    } 
+
+    function decrypt(encryptedText, n) { 
+        if (n === 0 ) return encryptedText;
+        if (encryptedText == null || encryptedText === '') return encryptedText;
+
+        let newString=e ncryptedText;
+        
+        for (let i=0 ; i < n; i++) { 
+            let middle=M ath.floor(newString.length / 2);
+            let start = newString.slice(0, middle), 
+                end = newString.slice(middle),
+                result=[];
+            for (let j=0 ; j < end.length; j++) {
+                result.push(end[j]);
+                result.push(start[j]); 
+            } 
+            newString = result.join('');
+        } 
+        
+        return newString;
+    }</code>
+                                </pre>
+                </section>
+                <section>
+                    <h3>
+                        <a href="http://www.codewars.com/kata/52de553ebb55d1fca3000371/train/javascript" target="_blank">Арифметическая прогрессия</a>
+                    </h3>
+                    <h5>Задание</h5>
+                    <p>Арифметическая прогрессия определяется как та, в которой существует постоянная разница между последовательными членами данной
+                    серии чисел. Вам предоставляются последовательные элементы арифметической прогрессии. Существует, однако, одна заминка: ровно
+                    один член из первоначальной серии отсутствует в наборе чисел, которые были вам предоставлены. Остальная часть данной серии
+                    такая же, как и исходная точка доступа. Найдите недостающий термин. Вам нужно написать функцию findMissing (list), список
+                    всегда будет как минимум 3 числа. Пропущенный срок никогда не будет первым или последним.</p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">var findMissing = function (list) {
+        let diff1 = list[1] - list[0]; 
+        let diff2 = list[2] - list[1]; 
+        let diff = Math.abs(diff2) > Math.abs(diff1) ? diff1 : diff2; 
+
+        for (let i = 0; i < list.length; i++) { 
+            if (list[i + 1] - list[i] ! == diff) {
+                return list[i] + diff; 
+            } 
+        }
+    }</code>
+                    </pre>
+                    <h5>Короткое решение</h5>
+                    <pre>
+                        <code data-language="javascript">var findMissing = function (list) {
+        var step = (list[list.length - 1] - list[0]) / (list.length); 
+        return list.filter(function(val,index) {
+            return val !== (list[0] + index * step);})[0] - step; 
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>
+                        <a href="http://www.codewars.com/kata/5262119038c0985a5b00029f/train/javascript" target="_blank">Простое число</a>
+                    </h3>
+                    <h5>Задание</h5>
+                    <p>Определите функцию isPrime, которая принимает один целочисленный аргумент и возвращает true или false
+                    в зависимости от того, является ли целое число простым. В Википедии простое число определяется как натуральное
+                    число больше единицы, не имеющее положительных делителей, отличных от 1 и самого себя.</p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function isPrime(num) {
+        if(num <= 1 ) return false; 
+
+        for(i = 2; d * d <= num; d++) {
+            if(num % d==0 ) return false; 
+        } 
+        
+        return true;
+    }</code>
+                    </pre>
+                    <h5>Другое решение</h5>
+                    <pre>
+                        <code data-language="javascript">function isPrime(num) {
+        for (var i = 2; i < num; i++) {
+            if (num % i == 0 ) return false;
+        } 
+        return num >= 2; 
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>
+                        <a href="http://www.codewars.com/kata/5262119038c0985a5b00029f/train/javascript" target="_blank">Уникальное число в массиве</a>
+                    </h3>
+                    <h5>Задание</h5>
+                    <p>
+                        Cуществует массив с некоторыми числами. Все числа равны, кроме одного. Попытайтесь найти его!
+                    </p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function findUniq(arr) {
+        var obj = {};
+        for (var i = 0; i < arr.length; i++) { 
+            let num = arr[i];
+            if (obj.hasOwnProperty(num)) { 
+                obj[num]++;
             } else {
-                end.push(newString[j])
+                obj[num]=1 ; 
             } 
         } 
         
-        newString=[ ...start, ...end].join( ''); 
-    }
-
-    return newString;
-} 
-
-function decrypt(encryptedText, n) { 
-    if (n === 0 ) return encryptedText;
-    if (encryptedText == null || encryptedText === '') return encryptedText;
-
-    let newString=e ncryptedText;
-    
-    for (let i=0 ; i < n; i++) { 
-        let middle=M ath.floor(newString.length / 2);
-        let start = newString.slice(0, middle), 
-            end = newString.slice(middle),
-            result=[];
-        for (let j=0 ; j < end.length; j++) {
-            result.push(end[j]);
-            result.push(start[j]); 
+        for (let key in obj) {
+            if (obj[key]==1 ) return +key; 
         } 
-        newString = result.join('');
-    } 
-    
-    return newString;
-}</code>
-                            </pre>
-            </section>
-            <section>
-                <h3>
-                    <a href="http://www.codewars.com/kata/52de553ebb55d1fca3000371/train/javascript" target="_blank">Арифметическая прогрессия</a>
-                </h3>
-                <h5>Задание</h5>
-                <p>Арифметическая прогрессия определяется как та, в которой существует постоянная разница между последовательными членами данной
-                серии чисел. Вам предоставляются последовательные элементы арифметической прогрессии. Существует, однако, одна заминка: ровно
-                один член из первоначальной серии отсутствует в наборе чисел, которые были вам предоставлены. Остальная часть данной серии
-                такая же, как и исходная точка доступа. Найдите недостающий термин. Вам нужно написать функцию findMissing (list), список
-                всегда будет как минимум 3 числа. Пропущенный срок никогда не будет первым или последним.</p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">var findMissing = function (list) {
-    let diff1 = list[1] - list[0]; 
-    let diff2 = list[2] - list[1]; 
-    let diff = Math.abs(diff2) > Math.abs(diff1) ? diff1 : diff2; 
+    }</code>
+                    </pre>
+                    <h5>Другое решение</h5>
+                    <pre>
+                        <code data-language="javascript">function findUniq(arr) { 
+        arr.sort((a, b) => a-b); 
+        return arr[0] == arr[1] ? arr.pop() :arr[0] 
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Полиндром</h3>
+                    <h5>Задание</h5>
+                    <p>Написать функцию, определяющую, является ли переданная строка палиндромом</p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function isPalindrome(str) {
+        let left = 0,
+            right = str.length - 1;
 
-    for (let i = 0; i < list.length; i++) { 
-        if (list[i + 1] - list[i] ! == diff) {
-            return list[i] + diff; 
-        } 
-    }
-}</code>
-                </pre>
-                <h5>Короткое решение</h5>
-                <pre>
-                    <code data-language="javascript">var findMissing = function (list) {
-    var step = (list[list.length - 1] - list[0]) / (list.length); 
-    return list.filter(function(val,index) {
-        return val !== (list[0] + index * step);})[0] - step; 
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>
-                    <a href="http://www.codewars.com/kata/5262119038c0985a5b00029f/train/javascript" target="_blank">Простое число</a>
-                </h3>
-                <h5>Задание</h5>
-                <p>Определите функцию isPrime, которая принимает один целочисленный аргумент и возвращает true или false
-                 в зависимости от того, является ли целое число простым. В Википедии простое число определяется как натуральное
-                число больше единицы, не имеющее положительных делителей, отличных от 1 и самого себя.</p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function isPrime(num) {
-    if(num <= 1 ) return false; 
+        while (left < right) { 
+            if (str[left] !== str[right]) {
+                return false; 
+            } 
+            left++;
+            right--; 
+        }
 
-    for(i = 2; d * d <= num; d++) {
-        if(num % d==0 ) return false; 
-    } 
-    
-    return true;
-}</code>
-                </pre>
-                <h5>Другое решение</h5>
-                <pre>
-                    <code data-language="javascript">function isPrime(num) {
-    for (var i = 2; i < num; i++) {
-        if (num % i == 0 ) return false;
-    } 
-    return num >= 2; 
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>
-                    <a href="http://www.codewars.com/kata/5262119038c0985a5b00029f/train/javascript" target="_blank">Уникальное число в массиве</a>
-                </h3>
-                <h5>Задание</h5>
-                <p>
-                    Cуществует массив с некоторыми числами. Все числа равны, кроме одного. Попытайтесь найти его!
-                </p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function findUniq(arr) {
-    var obj = {};
-    for (var i = 0; i < arr.length; i++) { 
-        let num = arr[i];
-        if (obj.hasOwnProperty(num)) { 
-            obj[num]++;
-        } else {
-            obj[num]=1 ; 
+        return true; 
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Глубокое копирование объекта</h3>
+                    <h5>Задание</h5>
+                    <p>Написать функцию, рекурсивно копирующую объект</p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">let obj = {
+        a: 'a',
+        b: 'b',
+        c: true,
+        d: {
+            bla: false,
+            foo: 'bar' 
         } 
     } 
-    
-    for (let key in obj) {
-        if (obj[key]==1 ) return +key; 
-    } 
-}</code>
-                </pre>
-                <h5>Другое решение</h5>
-                <pre>
-                    <code data-language="javascript">function findUniq(arr) { 
-    arr.sort((a, b) => a-b); 
-    return arr[0] == arr[1] ? arr.pop() :arr[0] 
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>Полиндром</h3>
-                <h5>Задание</h5>
-                <p>Написать функцию, определяющую, является ли переданная строка палиндромом</p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function isPalindrome(str) {
-    let left = 0,
-        right = str.length - 1;
 
-    while (left < right) { 
-        if (str[left] !== str[right]) {
-            return false; 
+    const deepClone = (obj) => {
+        let clone = {};
+        for (let prop in obj) {
+            if (typeof obj[prop] === 'object') {
+                clone[prop] = deepClone(obj[prop]); 
+            } else { 
+                clone[prop] = obj[prop];
+            } 
         } 
-        left++;
-        right--; 
-    }
-
-    return true; 
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>Глубокое копирование объекта</h3>
-                <h5>Задание</h5>
-                <p>Написать функцию, рекурсивно копирующую объект</p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">let obj = {
-    a: 'a',
-    b: 'b',
-    c: true,
-    d: {
-        bla: false,
-        foo: 'bar' 
-    } 
-} 
-
-const deepClone = (obj) => {
-    let clone = {};
-    for (let prop in obj) {
-        if (typeof obj[prop] === 'object') {
-            clone[prop] = deepClone(obj[prop]); 
-        } else { 
-            clone[prop] = obj[prop];
-        } 
-    } 
-    
-    return clone; 
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>Разложить односвязное дерево</h3>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">const list = {
-    value: 'root',
-    next: {
-        value: 'a',
+        
+        return clone; 
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Разложить односвязное дерево</h3>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">const list = {
+        value: 'root',
         next: {
-            value: 'b',
+            value: 'a',
             next: {
-                value: 'c',
+                value: 'b',
                 next: {
-                    value: 'd',
-                    next: null
+                    value: 'c',
+                    next: {
+                        value: 'd',
+                        next: null
+                    } 
                 } 
             } 
         } 
-    } 
-}; 
+    }; 
 
-//Решение с помощью цикла 
-const expand = (list) => {
-    let tmp = list;
-    let obj = {};
-    
-    while(tmp.next) {
-        obj[tmp.value] = tmp.next.value;
-        tmp = tmp.next; 
+    //Решение с помощью цикла 
+    const expand = (list) => {
+        let tmp = list;
+        let obj = {};
+        
+        while(tmp.next) {
+            obj[tmp.value] = tmp.next.value;
+            tmp = tmp.next; 
+        }
+
+        return obj; 
+    } 
+
+    //Решение с помощью рекурсии 
+    const expandRec = (list) => {
+        if (list.next) {
+            expandRec(list.next); 
+        } 
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Compose</h3>
+                    <h5>Задание</h5>
+                    <p>пример вызова: compose(fn1, fn2, fn3, fn4)(5123); т.е. аргумент 5123 попадет аргументом в fn4, она свой результат передаст
+                    в fn3, та в fn2 и наконец в fn1.</p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">const fn4 = (a) => { 
+        return a + 4; 
+    } 
+
+    const fn3 = (b) => {
+        return b + 3; 
+    } 
+
+    const fn2 = (c) => { 
+        return c + 2;
     }
 
-    return obj; 
-} 
-
-//Решение с помощью рекурсии 
-const expandRec = (list) => {
-    if (list.next) {
-        expandRec(list.next); 
+    const fn1 = (d) => {
+        return d + 1;
     } 
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>Compose</h3>
-                <h5>Задание</h5>
-                <p>пример вызова: compose(fn1, fn2, fn3, fn4)(5123); т.е. аргумент 5123 попадет аргументом в fn4, она свой результат передаст
-                в fn3, та в fn2 и наконец в fn1.</p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">const fn4 = (a) => { 
-    return a + 4; 
-} 
 
-const fn3 = (b) => {
-    return b + 3; 
-} 
+    function compose() {
+        const fns = arguments;
+        return (result) => {
+            for (var i = fns.length - 1; i > -1; i--) { 
+                result = fns[i].call(this, result); 
+            } 
+            
+            return result; 
+        } 
+    }</code>
+                    </pre>
+                    <h5>Ссылки по теме</h5>
+                    <a href="https://learn.javascript.ru/call-apply">Bind, Call, Apply</a>
+                </section>
+                <section>
+                    <h3>Задача про банкомат. Жадный алгоритм</h3>
+                    <h5>Задание</h5>
+                    <p>В банкомате есть купюры определенного номинала, нужно выдать клиенту определенную сумму наименьшим количесвтом купюр</p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">let money = [1, 2, 5, 10, 50, 100, 500, 1000]; 
+    let result = {};
+    let need = 128;
 
-const fn2 = (c) => { 
-    return c + 2;
-}
+    for (let i = money.length - 1; i >= 0; i--) { 
+        if (money[i] <= need) { 
+            let count = parseInt(need / money[i]); 
+            result[money[i]] = count; 
+            need -= count * money[i]; 
+        } 
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Разложить строку</h3>
+                    <h5>Задание</h5>
+                    <p>
+                        Разложить строку вида AAABBACDDDAFF на строку A3B2ACD3AF2. Если подряд расположены одинаковые
+                        символы, то в результирующую строку добавляется повторяющийся символ и количество его повторений
+                    </p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function curtail(str = 'AAABBACDDDAFF') {
+        let count = 1; 
+        let result = []; 
+        
+        for (let i = 0; i < str.length; i++) {
+            let cur = str.charAt(i);
+            
+            if (cur !== str.charAt(i - 1)) { 
+                result.push(cur);
+                count=1 ; 
+            } else { 
+                if (typeof result[result.length - 1] == 'number' ) { 
+                    result[result.length - 1] = ++count 
+                } else { 
+                    result.push(++count); 
+                } 
+            } 
+        } 
+        
+        return result.join( ''); 
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Разложить вложенный массив в плоский №1</h3>
+                    <h5>Задание</h5>
+                    <p>
+                        Разложить массив вида [1, [2], [3, [[[4]]]]] на строку [1, 2, 3, 4].
+                    </p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function flat(arr) {
+        let result = [];
 
-const fn1 = (d) => {
-    return d + 1;
-} 
-
-function compose() {
-    const fns = arguments;
-    return (result) => {
-        for (var i = fns.length - 1; i > -1; i--) { 
-            result = fns[i].call(this, result); 
+        for (var i = 0; i < arr.length; i++) {
+            if (Array.isArray(arr[i])) {
+                result = result.concat(flat(arr[i]));
+            } else {
+                result.push(arr[i]); 
+            } 
         } 
         
         return result; 
-    } 
-}</code>
-                </pre>
-                <h5>Ссылки по теме</h5>
-                <a href="https://learn.javascript.ru/call-apply">Bind, Call, Apply</a>
-            </section>
-            <section>
-                <h3>Задача про банкомат. Жадный алгоритм</h3>
-                <h5>Задание</h5>
-                <p>В банкомате есть купюры определенного номинала, нужно выдать клиенту определенную сумму наименьшим количесвтом купюр</p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">let money = [1, 2, 5, 10, 50, 100, 500, 1000]; 
-let result = {};
-let need = 128;
-
-for (let i = money.length - 1; i >= 0; i--) { 
-    if (money[i] <= need) { 
-        let count = parseInt(need / money[i]); 
-        result[money[i]] = count; 
-        need -= count * money[i]; 
-    } 
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>Разложить строку</h3>
-                <h5>Задание</h5>
-                <p>
-                    Разложить строку вида AAABBACDDDAFF на строку A3B2ACD3AF2. Если подряд расположены одинаковые
-                    символы, то в результирующую строку добавляется повторяющийся символ и количество его повторений
-                </p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function curtail(str = 'AAABBACDDDAFF') {
-    let count = 1; 
-    let result = []; 
-    
-    for (let i = 0; i < str.length; i++) {
-        let cur = str.charAt(i);
-        
-        if (cur !== str.charAt(i - 1)) { 
-            result.push(cur);
-            count=1 ; 
-        } else { 
-            if (typeof result[result.length - 1] == 'number' ) { 
-                result[result.length - 1] = ++count 
-            } else { 
-                result.push(++count); 
-            } 
-        } 
-    } 
-    
-    return result.join( ''); 
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>Разложить вложенный массив в плоский №1</h3>
-                <h5>Задание</h5>
-                <p>
-                    Разложить массив вида [1, [2], [3, [[[4]]]]] на строку [1, 2, 3, 4].
-                </p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function flat(arr) {
-    let result = [];
-
-    for (var i = 0; i < arr.length; i++) {
-        if (Array.isArray(arr[i])) {
-            result = result.concat(flat(arr[i]));
-        } else {
-            result.push(arr[i]); 
-        } 
-    } 
-    
-    return result; 
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>Разложить вложенный массив в плоский №2</h3>
-                <h5>Задание</h5>
-                <p>
-                    Разложить массив вида [[0, 1], [2, 3], [4, 5]] на строку [0, 1, 2, 3, 4, 5].
-                </p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function flat(arr) {
-    return arr.reduce(function(a, b) { 
-        return a.concat(b); 
-    })
-}</code>
-                </pre>
-            </section>
-            <section>
-                <h3>Анаграммы</h3>
-                <h5>Задание</h5>
-                <p>
-                    Анаграммы - слова, состоящие из одинакового количества одинаковых букв, но в разном порядке. 
-                    написать функцию которая принимает две строки и возвращает true или false в зависимости от того являются
-                    ли они анаграммами
-                </p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function isAnagram(str1, str2) { 
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Разложить вложенный массив в плоский №2</h3>
+                    <h5>Задание</h5>
+                    <p>
+                        Разложить массив вида [[0, 1], [2, 3], [4, 5]] на строку [0, 1, 2, 3, 4, 5].
+                    </p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function flat(arr) {
+        return arr.reduce(function(a, b) { 
+            return a.concat(b); 
+        })
+    }</code>
+                    </pre>
+                </section>
+                <section>
+                    <h3>Анаграммы</h3>
+                    <h5>Задание</h5>
+                    <p>
+                        Анаграммы - слова, состоящие из одинакового количества одинаковых букв, но в разном порядке. 
+                        написать функцию которая принимает две строки и возвращает true или false в зависимости от того являются
+                        ли они анаграммами
+                    </p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function isAnagram(str1, str2) { 
     if (str1 === str2) return false; 
     
     return str1.split('').sort().join('') === str2.split('').sort().join('');
 }</code>
-                </pre>
-                <h5>Заметки</h5>
-                <p>
-                    Эта задача может включать в себя поиск анаграмм в массиве строк, а так же 
-                    строка может содержать пробелы. В первом случае используется объект ключами которого являются
-                    отсортированные строки, в результате перебором этого объекта можно найти только те слова которые
-                    являются анаграммами из всего массива.
-                    Во втором случае нужно перед сортировкой строки (массива из символов строки) удалить все пробелы
-                </p>
-            </section>
-            <section>
-                <h3>Последовательность скобок</h3>
-                <h5>Задание</h5>
-                <p>
-                    Напишите функцию, которая будет исправлять последовательность скобок, используя минимальное количество изменений.
-                    Метод должен принимать строку, состоящую только из разрешенных скобок, и возвращать строку той же длины, содержащую правильную последовательность скобок. 
-                    Изменять можно только закрывающие скобки, т.е. ]})>. Открывающие скобки должны остататься без изменений. Если исправить
-                    строку невозможно, верните null.
-                </p>
-                <h5>Решение</h5>
-                <pre>
-                    <code data-language="javascript">function correctBrackets(str) { 
-    // объект с открывающими и закрывающими скобками 
-    let opening = { 
-        '[': ']', 
-        '{': '}', 
-        '(': ')', 
-        '< ': '>', 
-    }; 
-    
-    // простенький стэк 
-    let stack = []; 
-    
-    // результурующа строка 
-    let result = ''; 
-    
-    // пробегаем по всем симовлам входной строки
-    for (let i = 0; i < str.length; i++) { 
-        let skobka = str[i]; 
+                    </pre>
+                    <h5>Заметки</h5>
+                    <p>
+                        Эта задача может включать в себя поиск анаграмм в массиве строк, а так же 
+                        строка может содержать пробелы. В первом случае используется объект ключами которого являются
+                        отсортированные строки, в результате перебором этого объекта можно найти только те слова которые
+                        являются анаграммами из всего массива.
+                        Во втором случае нужно перед сортировкой строки (массива из символов строки) удалить все пробелы
+                    </p>
+                </section>
+                <section>
+                    <h3>Последовательность скобок</h3>
+                    <h5>Задание</h5>
+                    <p>
+                        Напишите функцию, которая будет исправлять последовательность скобок, используя минимальное количество изменений.
+                        Метод должен принимать строку, состоящую только из разрешенных скобок, и возвращать строку той же длины, содержащую правильную последовательность скобок. 
+                        Изменять можно только закрывающие скобки, т.е. ]})>. Открывающие скобки должны остататься без изменений. Если исправить
+                        строку невозможно, верните null.
+                    </p>
+                    <h5>Решение</h5>
+                    <pre>
+                        <code data-language="javascript">function correctBrackets(str) { 
+        // объект с открывающими и закрывающими скобками 
+        let opening = { 
+            '[': ']', 
+            '{': '}', 
+            '(': ')', 
+            '< ': '>', 
+        }; 
         
-        if (opening[skobka]) { //если скобка открывающаяся кладем ее в стэк 
-            stack.push(skobka); 
-        } else { 
-            // проверяем длину стэка, если в стэке пусто значит мы уже закрыли все скобки 
-            // и строка не подлежит исправлению 
-            if (stack.length === 0 ) { 
-                return null; 
+        // простенький стэк 
+        let stack = []; 
+        
+        // результурующа строка 
+        let result = ''; 
+        
+        // пробегаем по всем симовлам входной строки
+        for (let i = 0; i < str.length; i++) { 
+            let skobka = str[i]; 
+            
+            if (opening[skobka]) { //если скобка открывающаяся кладем ее в стэк 
+                stack.push(skobka); 
+            } else { 
+                // проверяем длину стэка, если в стэке пусто значит мы уже закрыли все скобки 
+                // и строка не подлежит исправлению 
+                if (stack.length === 0 ) { 
+                    return null; 
+                } 
+                
+                // берем скобку из стека и находим её закрывающую 
+                skobka = opening[stack.pop()]; 
             } 
             
-            // берем скобку из стека и находим её закрывающую 
-            skobka = opening[stack.pop()]; 
-        } 
-        
-        // добавляем к результирующей строке скобку 
-        result += skobka; 
-    }
+            // добавляем к результирующей строке скобку 
+            result += skobka; 
+        }
 
-    // если после всех манипуляций в стэке остались скобки значит строка не правильная 
-    if (stack.length> 0) { 
-        return null; 
-    }
+        // если после всех манипуляций в стэке остались скобки значит строка не правильная 
+        if (stack.length> 0) { 
+            return null; 
+        }
 
-    return result; 
-}</code>
-                </pre>
-        </section>
-    </main>
+        return result; 
+    }</code>
+                    </pre>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

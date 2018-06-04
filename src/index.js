@@ -200,6 +200,7 @@ function isAnagram(str1, str2) {
 //console.log(isAnagram('стационар', 'соратница'))
 
 function correctBrackets(str) {
+    // объект с открывающими и закрывающими скобками
     let opening = {
         '[': ']',
         '{': '}',
