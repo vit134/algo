@@ -1,273 +1,245 @@
-/* class Algo {
-    constructor(A) {
-        this._A = A;
-        
-        this._methods = new Map();
-    }
+import { join } from "path";
 
-    addMethod(name, method) {
-        this._methods.set(name, method);
-    }
+/* const sections = document.querySelectorAll('section');
 
-    getMethod(name) {
-        return this._methods.get(name);
-    }
-
-    bubleSorting() {
-        let A = this._A;
-
-        var l = A.length;
-        for (var i = 0; i < l - 1; i++) {
-            for (var j = 0; j < l - 1 - i; j++) {
-                if (A[j] > A[j + 1]) {
-                    var tmp = A[j + 1];
-                    A[j + 1] = A[j];
-                    A[j] = tmp;
-                }
-            }
-        }
-
-        return A;
-    }
-
-    selectionSort() {
-        let A = this._A;
-        let l = A.length
-
-        for (let i = 0; i < l - 1; i++) {
-            var min = i; 
-            
-            for (let j = i + 1; j < l; j++) {
-                if (A[j] < A[min]) {
-                    min = j;
-                }
-            }
-
-            var tmp = A[min];
-            A[min] = A[i];
-            A[i] = tmp;
-        }
-
-        return A;
-    }
-
-    insertionSort() {
-        //[14, 23, 1, 4, 3, 16, 20, 43, 34, 55, 76];
-
-        let A = this._A;
-
-        var n = A.length;
-        for (var i = 0; i < n; i++) {
-            var v = A[i],
-                j = i - 1;
-            
-            while (j >= 0 && A[j] > v) {
-                A[j + 1] = A[j];
-                j--;
-            }
-
-            A[j + 1] = v;
-        }
-        return A;
-    }
-}
-
-
-const entry = [14, 23, 1, 4, 3, 16, 20, 43, 34, 55, 76];
-const algo = new Algo(entry);
-
-
-
-console.log('bubleSorting');
-console.time('bublesorting');
-console.log(algo.bubleSorting());
-console.timeEnd('bublesorting');
-
-console.log('selectionSort');
-console.time('selectionSort');
-console.log(algo.selectionSort());
-console.timeEnd('selectionSort');
-
-console.log('insertionSort');
-console.time('insertionSort');
-console.log(algo.insertionSort());
-console.timeEnd('insertionSort');
-
-
-class LessonArray {
-    constructor() {
-        this._obj = {
-            className: 'open menu'
-        }
-    }
-
-    _indexOf(what, where) {
-        return where.indexOf(what);
-    }
-
-    //добавление подстроки в строку разбитой пробелами
-    addClass(cls, obj = this._obj) {
-        let classes = obj.className.split(' ');
-        
-        if (this._indexOf(cls, classes) === -1) {
-            classes.push(cls);
-        }
-
-        obj.className = classes.join(' ');
-
-        console.log(obj.className)
-    }
-
-    // приведение строки вида background-color к backgroundColor
-    camelize(str) {
-        let arr = str.split('-');
-
-        const a = arr.map((el, i) => {
-            if (i !== 0) {
-                el = el[0].toUpperCase() + el.slice(1);
-            }
-
-            return el;
-        });
-
-        console.log(a.join(''));
-    }
-
-    //Удаленеие подстроки из строки разбитой пробелами
-    removeClass(cls, obj = {className: 'open menu open'}) {
-        let classes = obj.className.split(' ');
-
-        for (let i = 0; i < classes.length; i++) {
-            if (classes[i] === cls) {
-                classes.splice(i, 1);
-            }
-        }
-
-        console.log(classes.join(' '));
-    }
-
-    // фильтрация массива на "месте". Удаление чисел вне диапазона a..b
-    filterrangeInPlace(a, b, arr = [5, 3, 8, 1]) {
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i] <= a || arr[i] >= b) {
-                arr.splice(i, 1);
-            }
-        }
-
-        console.log(arr);
-    }
-
-    reverseFilter(arr = [5, 2, 1, -10, 8]) {
-        console.log(arr.sort().reverse());
-    }
-
-    copyAndSort(arr = ["HTML", "JavaScript", "CSS"]) {
-        let sortArr = arr.map(el => {
-            return el;
-        });
-
-        sortArr.sort();
-
-        console.log(arr, sortArr);
-    }
-
-    randomSort(arr = [1, 2, 3, 4, 5]) {
-        arr = arr.sort((a, b) => {
-            return Math.random() - 0.5;
-        })
-
-        console.log(arr);
-    }
-
-    objectSort() {
-        var vasya = { name: "Вася", age: 23 };
-        var masha = { name: "Маша", age: 18 };
-        var vovochka = { name: "Вовочка", age: 6 };
-
-        var people = [ vasya , masha , vovochka ];
-
-        people.sort((a, b) => {
-            return a.age - b.age;
-        })
-
-        console.log(people);
-    }
-
-    oneList(arr = [1,2,3,4]) {
-        const list = {};
-        let entry = list;
-
-        for (let i = 0, item; item = arr[i++];) {
-            entry.next = {};
-            entry.value = item;
-
-            entry = entry.next;
-        }
-
-        console.log(list);
-    }
-}
-
-const lessonArray = new LessonArray();
-
-lessonArray.addClass('new');
-lessonArray.addClass('open');
-lessonArray.addClass('me');
-
-lessonArray.camelize('background-color');
-lessonArray.camelize('list-style-image');
-lessonArray.camelize('-webkit-transition');
-
-lessonArray.removeClass('open');
-lessonArray.removeClass('blabla');
-lessonArray.removeClass('menu');
-
-lessonArray.filterrangeInPlace(1, 4);
-lessonArray.reverseFilter();
-lessonArray.copyAndSort();
-lessonArray.randomSort();
-lessonArray.objectSort();
-lessonArray.oneList();
- */
-
-import './style.css';
-
-const displayHeight = 10;
-const displayWidth = 20;
-
-const screen = document.querySelector('.screen');
-let arr = [];
-
-for (let i = 0; i < displayHeight * displayWidth; i++) {
-    let cell = document.createElement('div');
-    cell.className = 'screen__cell';
-
-    screen.appendChild(cell);
-
-    cell.addEventListener('click', function (e) {
-        this.classList.toggle('active');
-        
-        if (this.classList.contains('active')) {
-            arr.push(i)
-        } else {
-            const ind = arr.indexOf(i);
-            arr.splice(ind, 1);
-        }
-
-        console.log(arr);
+const setSectionHeight = () => {
+    sections.forEach((el) => {
+        el.dataset.height = el.offsetHeight;
     })
 }
 
-const numWidth = 5;
-const numHeight = displayHeight;
+const toogleSection = () => {
+    
+    sections.forEach((el) => {
+        el.addEventListener('click', function(e) {
+            console.log('click')
+            e.stopPropagation();
 
-const num_2 = [10, 6, 7, 8, 14, 19, 24, 28, 32, 31, 35, 40, 41, 42, 43, 44];
-
-const getOffset = (num, i) => {
-    return num.map(el => {
-        return {
-            x: el / numWidth,
-            y: el
-        }
-    });
+            if (el.classList.contains('close')) {
+                //el.style.height = `${el.dataset.height}px`;
+                el.classList.remove('close');
+            } else {
+                console.log(el.children[0].offsetHeight);
+                //el.style.height = `${el.children[0].offsetHeight + 40}px`;
+                el.classList.add('close');
+            }
+        })
+    })
 }
+
+// простенькая очередь :)
+class Queue {
+    constructor(items) {
+        this._queueStartIndex = 0;
+        this._queue = Array.isArray(items) ? [
+            ...items
+        ] : [];
+    }
+
+    add(item) {
+        this._queue.push(item);
+    }
+
+    addAll(items) {
+        this._queue.push(...items);
+    }
+
+    poll() {
+        return !this.isEmpty() && this._queue[this._queueStartIndex++];
+    }
+
+    isEmpty() {
+        return this._queueStartIndex === this._queue.length;
+    }
+}
+
+class Trie {
+    constructor(words, limit) {
+        this._trie = this._createNode();
+        this._words = Array.from(words); // запоминаем исходный массив
+        this._limit = limit;
+
+        this._buildTree();
+    }
+
+    _createNode() {
+        return {
+            edges: {},
+            wordEnds: []
+        }
+    }
+
+    _buildTree() {
+        const words = this._words;
+        const trie = this._trie;
+        const prevDate = Number(new Date());
+        let nodeCount = 0;
+
+        for (let i = 0; i < words.length; i++) { // перебираем слова
+            const currentWord = words[i].toLowerCase();
+            for (let k = 0; k < currentWord.length; k++) { // перебираем все суффиксы слова
+                let currentNode = trie;
+                for (let j = k; j < currentWord.length; j++) { // записываем суффикс в дерево
+                    if (!currentNode.edges[currentWord[j]]) {
+                        currentNode.edges[currentWord[j]] = this._createNode();
+                        nodeCount++;
+                    }
+                    currentNode = currentNode.edges[currentWord[j]];
+                }
+                currentNode.wordEnds.push(i); // запоминаем индекс строки в последнем символе
+            }
+        }
+
+        console.log(trie);
+        console.log(`trie building: ${Number(new Date()) - prevDate} ms`);
+        console.log(`nodes count: ${nodeCount}`);
+    }
+
+    find(input) {
+        input = input.toLowerCase();
+        const prevDate = Number(new Date());
+        // берем Set, чтобы избавиться от дублей
+        const results = new Set();
+
+        let currentNode = this._trie;
+        // проверяем, что такая подстрока вообще есть, если нет, сразу возвращаем пустой массив
+        for (let i = 0; i < input.length; i++) {
+            if (currentNode.edges[input[i]]) {
+                currentNode = currentNode.edges[input[i]];
+            } else {
+                console.log(`trie search: ${Number(new Date()) - prevDate} ms`);
+                return [];
+            }
+        }
+
+        // начинаем обход дерева, чтобы найти исходные строки
+        const queue = new Queue([currentNode]);
+
+        wh:
+        while (!queue.isEmpty()) {
+            currentNode = queue.poll();
+            
+            for (let i = 0; i < currentNode.wordEnds.length; i++) {
+                results.add(currentNode.wordEnds[i]);
+                // перестаем искать, если нашли 10
+                if (results.size === this._limit) {
+                    break wh;
+                }
+            }
+            queue.addAll(Object.values(currentNode.edges))
+        }
+
+        console.log(`trie search: ${Number(new Date()) - prevDate} ms`);
+
+        // возвращаем непосредственно строки
+        return Array.from(results)
+            .map(index => this._words[index]);
+    }
+}
+
+
+window.trie = new Trie(window.defaultRoads, 10);
+
+console.log(window.trie.find('твер')) */
+
+//развернуть строку 
+function curtail(str = 'AAABBACDDDAFF') {
+    let count = 1;
+    let result = [];
+    
+    for (let i = 0; i < str.length; i++) {
+        let cur = str.charAt(i);
+        if (cur !== str.charAt(i - 1)) {
+            result.push(cur);
+            count = 1;
+        } else {
+            if (typeof result[result.length - 1] == 'number') {
+                result[result.length - 1] = ++count
+            } else {
+                result.push(++count);
+            }
+        }
+        
+    }
+
+    return result.join('');
+}
+
+//console.log('A3B2ACD3AF2' === curtail());
+
+function flat(arr) {
+    var result = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            result = result.concat(flat(arr[i]));
+        } else {
+            result.push(arr[i]);
+        }
+    }
+    return result;
+}
+
+let notFlatArr = [1, [2], [3, [[[4]]]]];
+let notFlatArr1 = [[0, 1], [2, 3], [4, 5]];
+
+function flat1(arr) {
+    return arr.reduce(function (a, b) {
+        return a.concat(b);
+    })
+}
+
+//console.log('total res', flat(notFlatArr));
+//console.log('total res1', flat1(notFlatArr1));
+
+function isAnagram(str1, str2) {
+    if (str1 === str2) return false;
+    
+    return str1.split('').sort().join('') === str2.split('').sort().join('');
+}
+
+//console.log(isAnagram('стационар', 'соратница'))
+
+function correctBrackets(str) {
+    let opening = {
+        '[': ']',
+        '{': '}',
+        '(': ')',
+        '<': '>',
+    };
+
+    // простенький стэк
+    let stack = [];
+
+    // результурующа строка
+    let result = '';
+
+    // пробегаем по всем симовлам входной строки
+    for (let i = 0; i < str.length; i++) {
+        let skobka = str[i];
+
+        
+        if (opening[skobka]) { //если скобка открывающаяся кладем ее в стэк
+            stack.push(skobka);        
+        } else {
+            // проверяем длину стэка, если в стэке пусто значит мы уже закрыли все скобки 
+            // и строка не подлежит исправлению
+            if (stack.length === 0) {
+                return null;
+            }
+            // берем скобку из стека и находим её закрывающую
+            skobka = opening[stack.pop()];
+        }
+
+        // добавляем к результирующей строке скобку
+        result += skobka;
+    }
+
+    // если после всех манипуляций в стэке остались скобки значит строка не правильная
+    if (stack.length > 0) {
+        return null;
+    }
+
+    return result;
+}
+
+console.log(correctBrackets('((]){]'));

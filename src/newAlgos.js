@@ -40,6 +40,7 @@ const list = {
     }
 };
 
+//Решение с помощью цикла
 const expand = (list) => {
     let tmp = list;
     let obj = {};
@@ -52,6 +53,7 @@ const expand = (list) => {
     return obj;
 }
 
+//Решение с помощью рекурсии
 const expandRec = (list) => {
     if (list.next && list.next !== null) {
         expandRec(list.next);
